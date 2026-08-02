@@ -141,10 +141,13 @@ async function runJob() {
     }
 }
 
-cron.schedule("*/30 * * * *", () => {
+console.log("Running initial scrape...");
+    scrapeListings();
+
+cron.schedule("*/1 * * * *", () => {
     runJob();
 });
 
-console.log("Scheduler started. Scraping every 30 minutes.");
+console.log("Scheduler started. Scraping every 1 minutes.");
 
 module.exports = { runJob, scrapeListings };
